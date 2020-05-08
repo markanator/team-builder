@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const MemberForm = props => {
+
+    const [isEditing,
+        setIsEditing] = useState(false);
 
     const [member,
         setMember] = useState({
         id: Date.now(),
-        name:  '',
+        name: '',
         email: '',
-        role:  '',
+        role: '',
         image: ''
     });
 
@@ -18,31 +21,55 @@ const MemberForm = props => {
         });
     };
 
+    useEffect(() => {
+        if(props.memberToEdit.id != null ){
+            setMember({...props.memberToEdit});
+            setIsEditing(true);
+            console.log("USE EFFECT", props.memberToEdit);
+        } else {
+            setIsEditing(false);
+        }
+    }, [props.memberToEdit]);
+
+    const newOrEdit = (meme)=>{
+        if (!isEditing){
+            props.addMember(meme);
+            console.log('NEW USER');
+            setIsEditing(false);
+        } else {
+            console.log('EDITED USER');
+            props.editor(meme);
+            setIsEditing(false);
+        }
+    }
+
     return (
         <form
             className="member-form"
             onSubmit={event => {
-            event.preventDefault(); //prevents refresh
-            props.addMember(member); //add notes on APP state
-            // reset
-            setMember({ name: '', email:'',role:'', image: '', id: Date.now() });
-            }}>
-            <label htmlFor="name">Name: </label>
+                event.preventDefault(); 
+                newOrEdit(member);
+                setMember({ id: Date.now(), name: '', email:'',role:'', image: ''  });
+                setIsEditing(false);
+                }}>
+            <label htmlFor="name">Name:
+            </label>
             <input
                 id="name"
                 name="name"
                 type="text"
                 placeholder="Name"
                 value={member.name}
-                onChange={changeHandler}/><br />
-            <label htmlFor="email">Email: </label>
+                onChange={changeHandler}/><br/>
+            <label htmlFor="email">Email:
+            </label>
             <input
                 id="email"
                 name="email"
                 type="text"
                 placeholder="Email"
                 value={member.email}
-                onChange={changeHandler}/><br />
+                onChange={changeHandler}/><br/>
             <label htmlFor="role">Role:</label>
             <input
                 id="role"
@@ -50,7 +77,7 @@ const MemberForm = props => {
                 type="text"
                 placeholder="Role"
                 value={member.role}
-                onChange={changeHandler}/><br />
+                onChange={changeHandler}/><br/>
             <label htmlFor="image">Imge URL:</label>
             <input
                 id="image"
@@ -58,7 +85,7 @@ const MemberForm = props => {
                 type="text"
                 placeholder="Image URL"
                 value={member.image}
-                onChange={changeHandler}/><br />
+                onChange={changeHandler}/><br/>
 
             <button type="submit">Submit</button>
         </form>
