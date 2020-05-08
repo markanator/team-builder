@@ -10,9 +10,9 @@ function App() {
         setTeamList] = useState([
         {
             id: 1,
-            name: 'Mark Ambro',
+            name:  'Mark Ambro',
             email: "mark.ambro@me.com",
-            role: "Front End",
+            role:  "Front End",
             image: 'https://avatars1.githubusercontent.com/u/16071902?s=460&u=5602fd491d54a6f63ee3d7' +
                 'f0a48c194eaeda4bd5&v=4'
         }
@@ -28,7 +28,9 @@ function App() {
     return (
         <div className="App">
             <h1>My Team</h1>
-            <MemberForm addMember={addMember}/>
+            <div className="member-form">
+                <MemberForm addMember={addMember}/>
+            </div>
             <Members members={teamList}/>
         </div>
     );

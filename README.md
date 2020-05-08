@@ -24,7 +24,7 @@ In this project you'll build an app that will keep track of memebers of a team. 
 - [X] Start up the app using `npm start`
 - [x] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [X] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
@@ -35,16 +35,16 @@ Follow these steps for completing your project.
 
 ## Minimum Viable Product
 
-- [ ] Render a list of team members from state
-- [ ] Build a form to add a new member to the list of members
+- [X] Render a list of team members from state
+- [X] Build a form to add a new member to the list of members
 
 ### STEP 1 - Setup your state
 
-- [ ] Import the `useState` hook and set up a state property for your team members list
+- [X] Import the `useState` hook and set up a state property for your team members list
 
-- [ ] Give the state variable you just declared a default value. You will need to keep track of a list of team members and each team member will have several key/value pairs associated with them.
+- [X] Give the state variable you just declared a default value. You will need to keep track of a list of team members and each team member will have several key/value pairs associated with them.
 
-- [ ] Render your list of team members
+- [X] Render your list of team members
 
 ### STEP 2 - Build your form
 
